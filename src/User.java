@@ -1,54 +1,30 @@
-public class User{
-  private int uID;
-  private String pwd;
-  private String uName;
-  private String uRole;
-  private int yearOfBirth;
-  private String remarks;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.*;
 
-  User(int uID, String pwd, String uName, String uRole, int yearOfBirth, String remarks){
+public class User{
+  public int uID;
+  public String pwd;
+  public String uName;
+  public String uRole;
+  public int yearOfBirth;
+  public String remarks;
+
+  public User(int uID, String pwd, String uName, String uRole, int yearOfBirth, String remarks){
     this.uID = uID;
     this.pwd = pwd;
     this.uName = uName;
     this.uRole = uRole;
     this.yearOfBirth = yearOfBirth;
-    this.remarks = remarks;
-  }
-  // getters and setters for this class
-  public int getUID(){
-    return uID;
-  }
-  public void int setUid(int uID){
-    this.uID = uID;
-  }
-  public String getPwd(){
-    return pwd;
-  }
-  public void String setPwd(String pwd){
-    this.pwd = pwd;
-  }
-  public String getUName(){
-    return uName;
-  }
-  public void String setUName(String uName){
-    this.uName = uName;
-  }
-  public String getURole(){
-    return uRole;
-  }
-  public void String setURole(String uRole){
-    this.uRole = uRole;
-  }
-  public int getYearOfBirth(){
-    return yearOfBirth;
-  }
-  public void int setYearOfBirth(int yearOfBirth){
-    this.yearOfBirth = yearOfBirth;
-  }
-  public String getRemarks(){
-    return remarks;
-  }
-  public void String setRemarks(String remarks){
     this.remarks = remarks;
   }
 
@@ -66,7 +42,7 @@ public class User{
       String line = null;
       while((line = br.readLine()) != null ){
         String[] userAttributes = line.split(",");
-        User user = createUser(userAttributes);
+        users.add(createUserFromFile(userAttributes));
       }
     } catch(IOException ioe) {
       ioe.printStackTrace();
@@ -74,14 +50,31 @@ public class User{
     return users;
   }
 
-  private static User createUser(String[] metadata){
-    int uID = metadata[0];
+  private static User createUserFromFile(String[] metadata){
+    int uID = Integer.parseInt(metadata[0]);
     String pwd = metadata[1];
     String uName = metadata[2];
     String uRole = metadata[3];
-    int yearOfBirth = metadata[4];
+    int yearOfBirth = Integer.parseInt(metadata[4]);
     String remarks = metadata[5];
 
+    return new User(uID, pwd, uName, uRole, yearOfBirth, remarks);
+  }
+
+  public static User writeUserToFile(int uID, String pwd, String uName, String uRole, int yearOfBirth, String remarks, String filePath){
+    try {
+      FileWriter fw = new FileWriter(filePath, true);
+      BufferedWriter bw = new BufferedWriter(fw);
+      PrintWriter pw = new PrintWriter(bw);
+
+      pw.println(uID + "," + pwd + "," + uName + "," + uRole + "," + yearOfBirth + "," + remarks);
+      pw.flush();
+      pw.close();
+
+      JOptionPane.showMessageDialog(null, "Record saved to csv file");
+    } catch(Exception e) {
+      JOptionPane.showMessageDialog(null, "Record not saved to csv file");
+    }
     return new User(uID, pwd, uName, uRole, yearOfBirth, remarks);
   }
 }
