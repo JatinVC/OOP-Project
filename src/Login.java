@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 public class Login extends JFrame implements ActionListener{
+	public String loginFilePath = "/csv/G18User.csv";
 	JLabel uLabel = new JLabel();
 	JLabel pLabel = new JLabel();
 	JButton SUBMIT = new JButton("SUBMIT");
@@ -29,15 +32,22 @@ public class Login extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		String uValue = UTEXTFIELD.getText();
 		String pValue = PTEXTFIELD.getText();
-		if(uValue.equals("Jatin") && pValue.equals("root")) {
-			NextPage page = new NextPage();
-			page.setVisible(true);
-			JLabel label = new JLabel("Welcome:"+uValue);
-			page.getContentPane().add(label);
+		if((uValue.equals("admin")) && (pValue.equals("root"))) {
+			UserPage userPage = new UserPage();
+			userPage.welcomeLabel.setText("Welcome " + uValue);
 		}else {
 			System.out.println("Enter the valid username and password");
       JOptionPane.showMessageDialog(this, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	private boolean searchArrayForName(String name, String[] arr){
+		for(String element : arr){
+			if(element == name){
+				return true;
+			}
+		}
+		return false;
+	}
+
 
 }
