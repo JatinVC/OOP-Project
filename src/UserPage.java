@@ -13,12 +13,14 @@ public class UserPage implements ActionListener{
     JButton lolButton = new JButton("League of Legends");
     JButton overwatchButton = new JButton("Overwatch");
     JButton displayLoginRecord = new JButton("Login Record");
+    JButton aboutUs = new JButton("About Us");
 
     rSixButton.addActionListener(this);
     csgoButton.addActionListener(this);
     lolButton.addActionListener(this);
     overwatchButton.addActionListener(this);
     displayLoginRecord.addActionListener(this);
+    aboutUs.addActionListener(this);
 
     mainPage.add(welcomeLabel);
     mainPage.add(rSixButton);
@@ -26,6 +28,7 @@ public class UserPage implements ActionListener{
     mainPage.add(lolButton);
     mainPage.add(overwatchButton);
     mainPage.add(displayLoginRecord);
+    mainPage.add(aboutUs);
 
     mainPage.setVisible(true);
   }
@@ -39,7 +42,10 @@ public class UserPage implements ActionListener{
     }else if(ae.getActionCommand().equals("Overwatch")){
       //launch overwatch individual section
     }else if(ae.getActionCommand().equals("Login Record")){
-
+      //display login record
+    }else if(ae.getActionCommand().equals("About Us")){
+      AboutUs about = new AboutUs();
+      about.setVisible(true);
     }
   }
 }

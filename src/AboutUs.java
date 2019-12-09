@@ -13,7 +13,7 @@ public class AboutUs extends JFrame implements ActionListener {
 	initGUI();
 	}
 	void initGUI(){
-	
+
 		panelTop.add(butAboutUs);
 		add(panelTop, BorderLayout.SOUTH); //add JPanel to top of JFrame
 		// registering this class object as event listener for the Button
@@ -24,11 +24,11 @@ public class AboutUs extends JFrame implements ActionListener {
 		// show AboutMe Message Dialog window
 			JOptionPane.showMessageDialog(null,
 				"Members(left to right):\n" +
-				"Wong Man Ho\n 123\n 123\n 123 ",
+				"Wong Man Ho\n Chandwaney Jatin Vimal\n 123\n 123 ",
 				"About Us: G??, 2019-2020, OOP",
 				JOptionPane.INFORMATION_MESSAGE,
-				new ImageIcon("Aboutus.png"));
-		} 
+				new ImageIcon("test.PNG"));
+		}
 
 public static void main(String[] args){ // Method to start program
 	 (new AboutUs()).setVisible(true);
