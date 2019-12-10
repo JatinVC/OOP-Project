@@ -66,7 +66,7 @@ public class CreateUsers {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				      File myObj = new File("users.txt");
+				      File myObj = new File("G18User.csv");
 				      Scanner myReader = new Scanner(myObj);
 				      count = 0;
 				      while (myReader.hasNextLine()) {
@@ -80,7 +80,7 @@ public class CreateUsers {
 				    }
 
 				try {
-				      FileWriter myWriter = new FileWriter("users.txt");
+				      FileWriter myWriter = new FileWriter("G18User.csv");
 				      for (int i = 0; i < count; i ++) {
 				    	  String temp = user[i];
 				    	  myWriter.write(temp+"\n");
@@ -111,5 +111,6 @@ public class CreateUsers {
 		btnClear.setFont(new Font("Arial", Font.BOLD, 20));
 		btnClear.setBounds(243, 184, 158, 47);
 		frame.getContentPane().add(btnClear);
+		frame.setVisible(true);
 	}
 }

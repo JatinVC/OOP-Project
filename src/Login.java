@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import javax.swing.*;
 import java.util.Scanner;
 import java.io.File;
+import java.time.LocalDate;
 
 public class Login extends JFrame implements ActionListener{
 	public static String loginFilePath = "G18User.csv";
@@ -22,7 +23,6 @@ public class Login extends JFrame implements ActionListener{
 	final JTextField UTEXTFIELD = new JTextField(15);
 	final JTextField PTEXTFIELD = new JTextField(15);
 	public static User user;
-	public static int lrID = 1;
 	Login(){
 		//fields for username
 		uLabel.setText("Username");
@@ -89,6 +89,7 @@ public class Login extends JFrame implements ActionListener{
 
 	public static void updateRecord(int uID, String filepath){
 		LocalTime now = LocalTime.now();
+		LocalDate lrID = LocalDate.now();
 		try {
 			FileWriter fw = new FileWriter(filepath,true);
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -99,7 +100,6 @@ public class Login extends JFrame implements ActionListener{
 			pw.close();
 
 			JOptionPane.showMessageDialog(null, "Login record updated");
-			lrID++;
 		} catch(Exception e) {
 			e.getStackTrace();
 		}

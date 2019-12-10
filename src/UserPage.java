@@ -40,7 +40,8 @@ public class UserPage implements ActionListener{
     }else if(ae.getActionCommand().equals("League of Legends")){
       //launch league of legends individual section
     }else if(ae.getActionCommand().equals("Overwatch")){
-      //launch overwatch individual section
+      G18m1WONGTestMain overwatch = new G18m1WONGTestMain();
+      overwatch.setVisible(true);
     }else if(ae.getActionCommand().equals("Login Record")){
       LoginRecord record = new LoginRecord();
     }else if(ae.getActionCommand().equals("About Us")){
