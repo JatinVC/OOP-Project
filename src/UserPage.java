@@ -42,7 +42,7 @@ public class UserPage implements ActionListener{
     }else if(ae.getActionCommand().equals("Overwatch")){
       //launch overwatch individual section
     }else if(ae.getActionCommand().equals("Login Record")){
-      //display login record
+      LoginRecord record = new LoginRecord();
     }else if(ae.getActionCommand().equals("About Us")){
       AboutUs about = new AboutUs();
       about.setVisible(true);

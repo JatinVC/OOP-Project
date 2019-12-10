@@ -12,22 +12,6 @@ public class AdminPage {
 	private JFrame frame;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AdminPage window = new AdminPage();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public AdminPage() {
@@ -71,5 +55,6 @@ public class AdminPage {
 		JButton button_3 = new JButton("LoginRecord (All records):  Delete");
 		button_3.setBounds(10, 207, 414, 41);
 		frame.getContentPane().add(button_3);
+		frame.setVisible(true);
 	}
 }

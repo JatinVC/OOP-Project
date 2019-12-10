@@ -37,8 +37,13 @@ public class LoginRecord{
       frame.add(sp);
       frame.setSize(500,200);
       frame.setVisible(true);
+      scan.close();
     } catch(Exception e) {
-      e.getStackTrace();
+      JOptionPane.showMessageDialog(null,e.getMessage());
     }
+  }
+
+  public static void main(String[] args) {
+    LoginRecord login = new LoginRecord();
   }
 }

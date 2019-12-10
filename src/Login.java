@@ -14,14 +14,15 @@ import java.util.Scanner;
 import java.io.File;
 
 public class Login extends JFrame implements ActionListener{
-	public static String loginFilePath = "/csv/G18User.csv";
-	public static String loginRecordPath = "/csv/G18LoginRecord.csv";
+	public static String loginFilePath = "G18User.csv";
+	public static String loginRecordPath = "G18LoginRecord.csv";
 	JLabel uLabel = new JLabel();
 	JLabel pLabel = new JLabel();
 	JButton SUBMIT = new JButton("SUBMIT");
 	final JTextField UTEXTFIELD = new JTextField(15);
 	final JTextField PTEXTFIELD = new JTextField(15);
 	public static User user;
+	public static int lrID = 1;
 	Login(){
 		//fields for username
 		uLabel.setText("Username");
@@ -69,7 +70,7 @@ public class Login extends JFrame implements ActionListener{
 					user = new User(uID, pwd, uName, uRole, yearOfBirth, remarks);
 					//update login record of this user
 					updateRecord(uID, loginRecordPath);
-					if(uRole.trim().equals("Admin")){
+					if(uRole.equals("Admin")){
 						AdminPage admin = new AdminPage();
 					}else{
 						UserPage user = new UserPage();
@@ -79,16 +80,15 @@ public class Login extends JFrame implements ActionListener{
 					System.out.println("Enter the valid username and password");
 					JOptionPane.showMessageDialog(null, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-				scan.close();
 			}
+			scan.close();
 		} catch(Exception e) {
-			e.getStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 	}
 
 	public static void updateRecord(int uID, String filepath){
 		LocalTime now = LocalTime.now();
-		int lrID = 1;
 		try {
 			FileWriter fw = new FileWriter(filepath,true);
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -99,6 +99,7 @@ public class Login extends JFrame implements ActionListener{
 			pw.close();
 
 			JOptionPane.showMessageDialog(null, "Login record updated");
+			lrID++;
 		} catch(Exception e) {
 			e.getStackTrace();
 		}
