@@ -22,6 +22,8 @@ public class CreateUsers {
 	private JFrame frame;
 	private JTextField textNewUsername;
 	private JTextField textNewPassword;
+	private JTextField textNewID;
+	private JTextField textNewRemark;
 	/**
 	 * Create the application.
 	 */
@@ -34,7 +36,7 @@ public class CreateUsers {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(300, 300, 500, 500);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -50,6 +52,18 @@ public class CreateUsers {
 		lblNewPassword.setBounds(10, 127, 158, 47);
 		frame.getContentPane().add(lblNewPassword);
 
+		JLabel lblNewID = new JLabel("New ID:");
+		lblNewID.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewID.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewID.setBounds(10, 202, 247, 47);
+		frame.getContentPane().add(lblNewID);
+
+		JLabel lblNewRemark = new JLabel("New Remark:");
+		lblNewRemark.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewRemark.setFont(new Font("Arial", Font.BOLD, 20));
+		lblNewRemark.setBounds(-10, 277, 247, 47);
+		frame.getContentPane().add(lblNewRemark);
+
 		textNewUsername = new JTextField();
 		textNewUsername.setFont(new Font("Arial", Font.BOLD, 20));
 		textNewUsername.setBounds(177, 52, 247, 47);
@@ -61,6 +75,18 @@ public class CreateUsers {
 		textNewPassword.setColumns(10);
 		textNewPassword.setBounds(177, 127, 247, 47);
 		frame.getContentPane().add(textNewPassword);
+
+		textNewID = new JTextField();
+		textNewID.setFont(new Font("Arial", Font.BOLD, 20));
+		textNewID.setColumns(10);
+		textNewID.setBounds(177, 202, 247, 47);
+		frame.getContentPane().add(textNewID);
+
+		textNewRemark = new JTextField();
+		textNewRemark.setFont(new Font("Arial", Font.BOLD, 20));
+		textNewRemark.setColumns(10);
+		textNewRemark.setBounds(177, 277, 247, 47);
+		frame.getContentPane().add(textNewRemark);
 
 		JButton btnNewButton = new JButton("Confirm");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -87,8 +113,11 @@ public class CreateUsers {
 				      }
 				      String newName = textNewUsername.getText();
 				      String newPw = textNewPassword.getText();
-				      myWriter.write(newName+"\n");
-				      myWriter.write(newPw);
+							String ID = textNewID.getText();
+							String uRole = "GUser";
+							int yearOfBirth = 2000;
+							String remarks = textNewRemark.getText();
+							myWriter.write(ID+","+newPw+","+newName+","+uRole+","+yearOfBirth+","+remarks);
 				      myWriter.close();
 				    } catch (IOException e2) {
 				    	JOptionPane.showMessageDialog(null, "Error!","Error!", JOptionPane.ERROR_MESSAGE);
@@ -98,7 +127,7 @@ public class CreateUsers {
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 20));
-		btnNewButton.setBounds(32, 184, 158, 47);
+		btnNewButton.setBounds(32, 350, 158, 47);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnClear = new JButton("Clear");
@@ -109,7 +138,7 @@ public class CreateUsers {
 			}
 		});
 		btnClear.setFont(new Font("Arial", Font.BOLD, 20));
-		btnClear.setBounds(243, 184, 158, 47);
+		btnClear.setBounds(243, 350, 158, 47);
 		frame.getContentPane().add(btnClear);
 		frame.setVisible(true);
 	}
