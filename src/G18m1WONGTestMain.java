@@ -30,7 +30,7 @@ public class G18m1WONGTestMain extends JFrame implements ActionListener {
 		add(panelBelow, BorderLayout.SOUTH);
 		add(labelInfo, BorderLayout.NORTH);
 		butAboutMe.addActionListener(this);
-		
+
 
 		apply.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent event1) {
