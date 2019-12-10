@@ -34,7 +34,7 @@ public class UserPage implements ActionListener{
   }
   public void actionPerformed(ActionEvent ae){
     if(ae.getActionCommand().equals("Rainbow Six")){
-      //launch rainbow individual section
+      G18M4MAIN rSix = new G18M4MAIN();
     }else if(ae.getActionCommand().equals("CS:GO")){
       //launch csgo individual section
     }else if(ae.getActionCommand().equals("League of Legends")){
