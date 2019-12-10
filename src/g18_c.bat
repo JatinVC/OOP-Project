@@ -4,8 +4,7 @@ javac AdminPage.java
 javac CreateUsers.java
 javac DeleteLoginRecord.java
 javac DeleteUsers.java
-javac G18m1Record.java
-javac G18m1WONGTestMain.java
+javac G18m1WONG.java
 javac G18M4APPOINTMENT.java
 javac G18M4MAIN.java
 javac G18M4TESTMAIN.java
@@ -14,3 +13,7 @@ javac LoginRecord.java
 javac LoginTest.java
 javac User.java
 javac Userpage.java
+javac G18M2TESTMAIN.java
+javac G18M3Register.java
+javac G18M3Information.java
+pause

@@ -36,11 +36,12 @@ public class UserPage implements ActionListener{
     if(ae.getActionCommand().equals("Rainbow Six")){
       G18M4MAIN rSix = new G18M4MAIN();
     }else if(ae.getActionCommand().equals("CS:GO")){
-      //launch csgo individual section
+      G18M3Register csgo = new G18M3Register();
+      csgo.frame.setVisible(true);
     }else if(ae.getActionCommand().equals("League of Legends")){
-      //launch league of legends individual section
+      G18M2TESTMAIN league = new G18M2TESTMAIN(Login.user.getUID(), Login.user.getUID(), "21/21/2019", "Type,", "String", "REUID");
     }else if(ae.getActionCommand().equals("Overwatch")){
-      G18m1WONGTestMain overwatch = new G18m1WONGTestMain();
+      G18m1WONG overwatch = new G18m1WONG();
       overwatch.setVisible(true);
     }else if(ae.getActionCommand().equals("Login Record")){
       LoginRecord record = new LoginRecord();
