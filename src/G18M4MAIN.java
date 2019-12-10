@@ -20,7 +20,7 @@ public class G18M4MAIN implements ActionListener{
   JButton viewAppointment = new JButton("View Booked Appointments");
 
   G18M4MAIN(){
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     panel.add(bookAppointment);
     panel.add(viewAppointment);
     panel.add(aboutMe);
@@ -36,11 +36,9 @@ public class G18M4MAIN implements ActionListener{
     if(ae.getActionCommand().equals("About Me")){
       aboutMe();
     }else if(ae.getActionCommand().equals("Book an Appointment")){
-      //bookAppointment(Login.user.getUID());
-      bookAppointment(1);
+      bookAppointment(Login.user.getUID());
     }else if(ae.getActionCommand().equals("View Booked Appointments")){
-      //viewAppointment(Login.user.getUID());
-      viewAppointment(1);
+      viewAppointment(Login.user.getUID());
     }
   }
 
