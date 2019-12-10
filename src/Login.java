@@ -15,6 +15,8 @@ import java.io.File;
 import java.time.LocalDate;
 import java.text.SimpleDateFormat;
 import java.util.Random;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class Login extends JFrame implements ActionListener{
 	public static String loginFilePath = "G18User.csv";
@@ -47,7 +49,7 @@ public class Login extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		String uValue = UTEXTFIELD.getText();
 		String pValue = PTEXTFIELD.getText();
-		verifyLogin(uValue, pValue, loginFilePath);
+		verifyLogin(uValue, encryptPwd(pValue), loginFilePath);
 	}
 
 	public static void verifyLogin(String username, String password, String filepath){
@@ -64,7 +66,7 @@ public class Login extends JFrame implements ActionListener{
 				if(userAttributes[2].trim().equals(username.trim()) && userAttributes[1].trim().equals(password.trim())){
 					found=true;
 					int uID = Integer.parseInt(userAttributes[0]);
-					String pwd = userAttributes[1];
+					String pwd = encryptPwd(userAttributes[1]);
 					String uName = userAttributes[2];
 					String uRole = userAttributes[3];
 					int yearOfBirth = Integer.parseInt(userAttributes[4]);
@@ -107,5 +109,23 @@ public class Login extends JFrame implements ActionListener{
 		} catch(Exception e) {
 			e.getStackTrace();
 		}
+	}
+
+	public static String encryptPwd(String pwd){
+		try{
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] passBytes = pwd.getBytes();
+			md.reset();
+			byte[] digested = md.digest(passBytes);
+			StringBuffer sb = new StringBuffer();
+			for(int i=0;i<digested.length;i++){
+				sb.append(Integer.toHexString(0xff & digested[i]));
+			}
+			System.out.println(sb.toString());
+			return sb.toString();
+		}catch(NoSuchAlgorithmException e){
+			System.out.println(e.getStackTrace());
+		}
+		return null;
 	}
 }

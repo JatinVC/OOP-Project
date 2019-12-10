@@ -45,6 +45,12 @@ public class AdminPage {
 		frame.getContentPane().add(button);
 
 		JButton button_1 = new JButton("User (All user accounts): Delete");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteUsers delete = new DeleteUsers();
+				delete.frame.setVisible(true);
+			}
+		});
 		button_1.setBounds(10, 109, 414, 41);
 		frame.getContentPane().add(button_1);
 
@@ -53,6 +59,12 @@ public class AdminPage {
 		frame.getContentPane().add(button_2);
 
 		JButton button_3 = new JButton("LoginRecord (All records):  Delete");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteLoginRecord deleteLR = new DeleteLoginRecord();
+				deleteLR.frame.setVisible(true);
+			}
+		});
 		button_3.setBounds(10, 207, 414, 41);
 		frame.getContentPane().add(button_3);
 		frame.setVisible(true);
