@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.util.Scanner;
 import java.io.File;
 import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Random;
 
 public class Login extends JFrame implements ActionListener{
 	public static String loginFilePath = "G18User.csv";
@@ -90,12 +92,14 @@ public class Login extends JFrame implements ActionListener{
 	public static void updateRecord(int uID, String filepath){
 		LocalTime now = LocalTime.now();
 		LocalDate lrID = LocalDate.now();
+		Random number = new Random();
+		int random = number.nextInt(100);
 		try {
 			FileWriter fw = new FileWriter(filepath,true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
 
-			pw.println(lrID+","+uID+","+now+","+"-");
+			pw.println(lrID+Integer.toString(random)+","+uID+","+now+","+"-");
 			pw.flush();
 			pw.close();
 
