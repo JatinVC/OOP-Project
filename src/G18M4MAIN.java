@@ -14,7 +14,7 @@ public class G18M4MAIN implements ActionListener{
   int arID = 0;
   JFrame frame = new JFrame("Rainbow Six Training");
   JPanel panel = new JPanel();
-  JLabel information = new JLabel("Here you can make appointments for Rainbow Six Trainingblahblahblah");
+  JLabel information = new JLabel("Here you can make appointments for Rainbow Six Siege Training");
   JButton aboutMe = new JButton("About Me");
   JButton bookAppointment = new JButton("Book an Appointment");
   JButton viewAppointment = new JButton("View Booked Appointments");

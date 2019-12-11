@@ -14,6 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class CreateUsers {
 
@@ -112,7 +114,7 @@ public class CreateUsers {
 				    	  myWriter.write(temp+"\n");
 				      }
 				      String newName = textNewUsername.getText();
-				      String newPw = textNewPassword.getText();
+				      String newPw = encryptPwd(textNewPassword.getText());
 							String ID = textNewID.getText();
 							String uRole = "GUser";
 							int yearOfBirth = 2000;
@@ -141,5 +143,23 @@ public class CreateUsers {
 		btnClear.setBounds(243, 350, 158, 47);
 		frame.getContentPane().add(btnClear);
 		frame.setVisible(true);
+	}
+
+	public static String encryptPwd(String pwd){
+		try{
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] passBytes = pwd.getBytes();
+			md.reset();
+			byte[] digested = md.digest(passBytes);
+			StringBuffer sb = new StringBuffer();
+			for(int i=0;i<digested.length;i++){
+				sb.append(Integer.toHexString(0xff & digested[i]));
+			}
+			System.out.println(sb.toString());
+			return sb.toString();
+		}catch(NoSuchAlgorithmException e){
+			System.out.println(e.getStackTrace());
+		}
+		return null;
 	}
 }

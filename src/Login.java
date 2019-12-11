@@ -76,18 +76,22 @@ public class Login extends JFrame implements ActionListener{
 					updateRecord(uID, loginRecordPath);
 					if(uRole.equals("Admin")){
 						AdminPage admin = new AdminPage();
+						admin.frame.setVisible(true);
 					}else{
 						UserPage user = new UserPage();
 						UserPage.welcomeLabel.setText("Welcome " + userAttributes[2]);
 					}
 				}else{
-					System.out.println("Enter the valid username and password");
-					JOptionPane.showMessageDialog(null, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
+					found=false;
 				}
 			}
 			scan.close();
 		} catch(Exception e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
+		}
+		if(!found){
+			System.out.println("Enter the valid username and password");
+			JOptionPane.showMessageDialog(null, "Incorrect login or password", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

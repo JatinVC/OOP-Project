@@ -47,7 +47,6 @@ public class UserPage implements ActionListener{
       LoginRecord record = new LoginRecord();
     }else if(ae.getActionCommand().equals("About Us")){
       AboutUs about = new AboutUs();
-      about.setVisible(true);
     }
   }
 }
